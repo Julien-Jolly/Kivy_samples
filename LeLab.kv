@@ -1,94 +1,48 @@
-PageLayoutExemple:
-
-<PageLayoutExemple@PageLayout>:
-    MainWidget:
-    BoxLayoutExemple:
-    AnchorLayoutExemple:
-    GridLayoutExemple:
+#:import layout_exemples layout_exemples
+#:import widget_exemples widget_exemples
+#:import navigation_screen_manager navigation_screen_manager
+#:import boxlayout_with_action_bar boxlayout_with_action_bar
 
 
-<ScrollViewExemple@ScrollView>
-    StackLayoutExemple:
-        size_hint: 1, None
-        height: self.minimum_height
-
-<StackLayoutExemple>:
-    # "left-right, top-bottom"
-    # orientation: "lr-bt"
-    # padding: ("20dp", "20dp", "20dp", "20dp")
-    # spacing: "20dp", "20dp"
-
-
-<GridLayoutExemple@GridLayout>:
-    # rows
-    cols : 3
-    # rows: 3
+<MenuPrincipal@BoxLayout>:
+    orientation: "vertical"
     Button:
-        text: "A"
-        size_hint: None, 1
-        width: "60dp"
-    BoxLayoutExemple:
+        text: "Layouts"
+        on_press: app.manager.push("LayoutExemplesTabs")
     Button:
-        text: "C"
+        text: "Widgets"
+        on_press: app.manager.push("WidgetsExemple")
     Button:
-        text: "D"
-        size_hint: None, 1
-        width: "60dp"
+        text: "Images"
+        on_press: app.manager.push("ImagesExemple")
     Button:
-        text: "E"
-    Button:
-        text: "F"
+        text: "Canvas"
+        on_press: app.manager.push("CanvasExemplesTabs")
+
+<MyScreenManager>:
+    Screen:
+        name: "MenuPrincipal"
+        MenuPrincipal:
+    Screen:
+        name: "CanvasExemplesTabs"
+        BoxLayoutWithActionBar:
+            title: "Canvas"
+            CanvasExemplesTabs:
+    Screen:
+        name: "LayoutExemplesTabs"
+        BoxLayoutWithActionBar:
+            title: "Layouts"
+            LayoutExemplesTabs:
+    Screen:
+        name: "WidgetsExemple"
+        BoxLayoutWithActionBar:
+            title: "Widgets"
+            WidgetsExemple:
+    Screen:
+        name: "ImagesExemple"
+        BoxLayoutWithActionBar:
+            title: "Images"
+            ImagesExemple:
 
 
-<AnchorLayoutExemple>:
-    # right, left, center
-    anchor_x: "center"
-    # bottom, top, center
-    anchor_y: "top"
 
-    BoxLayout:
-        size_hint: .2, .2
-        Button:
-            text: "A"
-        Button:
-            text: "B"
-
-
-
-<BoxLayoutExemple>:
-    orientation: "horizontal"
-    # spacing: "10dp"
-    Button:
-        text: "A"
-        size_hint: .5, .5
-        # size: "100dp", "60dp"
-        # height: "60dp"
-        # x, right, center_x
-        # y, top, center_y
-        pos_hint: { "top": 1  }
-    BoxLayout:
-        spacing: "10dp"
-        orientation: "vertical"
-        Button:
-            text: "B1"
-        Button:
-            text: "B2"
-        Button:
-            text: "B3"
-        Button:
-            text: "B4"
-    Label:
-        text: "C"
-
-
-<MainWidget>:
-    Button:
-        text: "Hello"
-        size: "100dp", "60dp"
-        pos: "200dp", "100dp"
-        color: 0, 0, 1, 1
-    Label:
-        text: "Hello2"
-        size: "100dp", "60dp"
-        pos: "400dp", "200dp"
-        color: 1, 0, 0, 1
